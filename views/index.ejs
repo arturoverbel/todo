@@ -1,15 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
   <head>
     <title>TO DO</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
-  <body>
+  <body ng-controller="TodoController">
     <h1>TO DO</h1>
 
-    <input type="hidden" value='<%- JSON.stringify(data) %>'>
+    <input type="hidden" id="data" ng-model="data" value='<%- JSON.stringify(data) %>'>
+    <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-6">
+              <h2>Pendientes</h2>
+              {{ data }}
+          </div>
+          <div class="col-md-6">
+              <h2>Vencidos</h2>
+          </div>
+      </div>
+    </div>
 
+
+    <script>
+        angular.module('app', [])
+            .controller('TodoController', ['$scope', function ($scope) {
+
+                console.log($scope);
+
+                var data = $scope.data;
+                console.log(data);
+
+
+            }]);
+
+    </script>
 
 
   </body>
